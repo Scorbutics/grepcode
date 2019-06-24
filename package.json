@@ -1,6 +1,7 @@
 {
-	"name": "grep-",
-	"displayName": "Grep+",
+	"publisher": "Scorbutics",
+	"name": "grepcode",
+	"displayName": "Grepcode",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
