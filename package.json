@@ -1,0 +1,87 @@
+{
+	"name": "grep-",
+	"displayName": "Grep+",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.35.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.grepcode.pattern.search",
+		"onCommand:extension.grepcode.pattern.add",
+		"onCommand:extension.grepcode.pattern.remove",
+		"onCommand:extension.grepcode.parameter.add",
+		"onCommand:extension.grepcode.parameter.remove"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [{
+			"command": "extension.grepcode.pattern.search",
+			"title": "Grep pattern search"
+		},
+		{
+			"command": "extension.grepcode.pattern.add",
+			"title": "Grep pattern add"
+		},
+		{
+			"command": "extension.grepcode.pattern.remove",
+			"title": "Grep pattern remove"
+		},
+		{
+			"command": "extension.grepcode.parameter.remove",
+			"title": "Grep parameter remove"
+		},
+		{
+			"command": "extension.grepcode.parameter.add",
+			"title": "Grep parameter add"
+		}],
+		"menus": {
+			"editor/context": [{
+				"when": "!editorHasSelection&&config.grepcode.hasPatterns",
+				"command": "extension.grepcode.pattern.search"
+			},{
+				"when": "!editorHasSelection",
+				"command": "extension.grepcode.pattern.add"
+			},{
+				"when": "!editorHasSelection&&config.grepcode.hasPatterns",
+				"command": "extension.grepcode.pattern.remove"
+			},{
+				"when": "!editorHasSelection&&config.grepcode.hasParameters",
+				"command": "extension.grepcode.parameter.remove"
+			},{
+				"when": "editorHasSelection",
+				"command": "extension.grepcode.parameter.add"
+			}]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Grepcode configuration",
+			"properties": {
+					"grepcode.hasPatterns": {
+							"type": "boolean",
+							"default": false,
+							"description": "hasPatterns"
+					},
+					"grepcode.hasParameters": {
+							"type": "boolean",
+							"default": false,
+							"description": "hasParameters"
+					}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
